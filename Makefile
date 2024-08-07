@@ -5,8 +5,8 @@ SRC_DIR = src
 CFLAGS = -Wall -Wextra -Wpedantic -Wfatal-errors -std=c++11 -g
 
 CPPFLAGS = $(addprefix -I, $(INC_DIR))
-SOURCES = $(sort $(shell find $(SRC_DIR) -name '*.cc'))
-OBJECTS = $(SOURCES:.cc=.o)
+SOURCES = $(sort $(shell find $(SRC_DIR) -name '*.cpp'))
+OBJECTS = $(SOURCES:.cpp=.o)
 DEPS = $(OBJECTS:.o=.d)
 
 .PHONY: all clean
