@@ -1,10 +1,9 @@
 #include "../inc/bf.hpp"
 #include "../inc/tokenizer.hpp"
-#include "../inc/preprocessor.hpp"
+#include "../inc/optimizer.hpp"
 #include "../inc/interpreter.hpp"
 
 #include <fstream>
-#include <list>
 #include <cstring>
 #include <vector>
 
@@ -14,16 +13,21 @@ bool BrainFuck(std::string filename) {
         throw std::invalid_argument("The provided file '" + filename + "' could not be read.");
     }
 
-    std::list<BFCommands> commands;
+    std::vector<BFCommands> commands;
     char invalid;
     if (!bf_tokenizer(f, commands, invalid)) {
+        f.close();
         throw std::invalid_argument("Input file contained invalid character '" + std::string(1, invalid) + "'.");
     }
+    f.close();
 
     std::vector<BFToken> tokens;
-    if (!bf_preprocessor(commands, tokens)) {
-        throw std::runtime_error("Error occurred while preprocessing source code.");
+    if (!bf_optimizer(commands, tokens)) {
+        throw std::runtime_error("Error occurred while optimizing source code.");
     }
 
-    return bf_interpreter(tokens);
+    if (!bf_interpreter(tokens)) {
+        throw std::runtime_error("Error occurred while running program.");
+    }
+    return true;
 }

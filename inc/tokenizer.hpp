@@ -2,10 +2,10 @@
 #define BF_TOKENIZER_H
 
 #include <fstream>
-#include <list>
+#include <vector>
 
 #include "constants.hpp"
 
-bool bf_tokenizer(std::ifstream &f, std::list<BFCommands> &commands, char &invalid);
+bool bf_tokenizer(std::ifstream &f, std::vector<BFCommands> &commands, char &c);
 
 #endif

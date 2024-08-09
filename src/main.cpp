@@ -14,7 +14,9 @@ int main(int argc, char *argv[]) {
         std::invalid_argument("Invalid number of arguments.");
     }
 
-    BrainFuck(filename);
+    if (!BrainFuck(filename)) {
+        return -1;
+    }
 
     return 0;
 }

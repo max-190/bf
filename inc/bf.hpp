@@ -3,8 +3,6 @@
 
 #include <string>
 
-#include "constants.hpp"
-
 bool BrainFuck(std::string filename);
 
 #endif

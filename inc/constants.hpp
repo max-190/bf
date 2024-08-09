@@ -8,9 +8,9 @@ enum class BFCommands {
     IncrementPointer,
     DecrementPointer,
     IncrementByte,
-    DecrementBByte,
-    InputByte,
+    DecrementByte,
     OutputByte,
+    InputByte,
     LoopStart,
     LoopEnd
 };
