@@ -9,16 +9,12 @@ bool bf_interpreter(std::vector<BFToken> tokens) {
     while (instr_p != tokens.size()) {
         switch (tokens[instr_p].command) {
             case BFCommands::IncrementPointer:
+            case BFCommands::DecrementPointer:
                 data_p += tokens[instr_p].data;
                 break;
-            case BFCommands::DecrementPointer:
-                data_p -= tokens[instr_p].data;
-                break;
             case BFCommands::IncrementByte:
-                A[data_p] += tokens[instr_p].data;
-                break;
             case BFCommands::DecrementByte:
-                A[data_p] -= tokens[instr_p].data;
+                A[data_p] += tokens[instr_p].data;
                 break;
             case BFCommands::OutputByte:
                 std::cout << A[data_p];

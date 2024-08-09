@@ -20,11 +20,7 @@ bool bf_optimizer(std::vector<BFCommands> &commands, std::vector<BFToken> &token
                     }
                     it++;
                 }
-                if (increment_counter > 0) {
-                    tokens.push_back({BFCommands::IncrementPointer, increment_counter});
-                } else if (increment_counter < 0) {
-                    tokens.push_back({BFCommands::DecrementPointer, -1 * increment_counter});
-                }
+                tokens.push_back({BFCommands::IncrementPointer, increment_counter});
                 it--;
                 break;
             case BFCommands::IncrementByte:
@@ -40,11 +36,7 @@ bool bf_optimizer(std::vector<BFCommands> &commands, std::vector<BFToken> &token
                     }
                     it++;
                 }
-                if (increment_counter > 0) {
-                    tokens.push_back({BFCommands::IncrementByte, increment_counter});
-                } else if (increment_counter < 0) {
-                    tokens.push_back({BFCommands::DecrementByte, -1 * increment_counter});
-                }
+                tokens.push_back({BFCommands::IncrementByte, increment_counter});
                 it--;
                 break;
             case BFCommands::LoopStart:
