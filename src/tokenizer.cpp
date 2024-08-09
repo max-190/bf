@@ -1,5 +1,6 @@
 #include <list>
-#include<limits>
+#include <limits>
+#include <iostream>
 
 #include "../inc/tokenizer.hpp"
 
@@ -29,6 +30,7 @@ bool bf_tokenizer(std::ifstream &f, std::vector<BFCommands> &commands, char &c) 
                 break;
             case ']':
                 commands.push_back(BFCommands::LoopEnd);
+                break;
             case ';':
                 f.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             case ' ':
@@ -38,5 +40,6 @@ bool bf_tokenizer(std::ifstream &f, std::vector<BFCommands> &commands, char &c) 
                 continue;
         }
     }
+    
     return true;
 }
